@@ -1,0 +1,834 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    title: "Limpieza y Mantenimiento",
+    desc: "Servicio integral para empresas, consorcios e instituciones. Personal capacitado y maquinaria industrial para resultados impecables.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`,
+    title: "Final de Obra / Pre Mudanza",
+    desc: "Dejamos tu espacio listo para estrenar. Eliminamos polvo de construcción, restos y suciedad con un acabado de nivel profesional.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
+    title: "Limpieza de Tapizados",
+    desc: "Sofás, colchones, alfombras, sillas, vehículos y artículos de bebé. Lavado profundo con desinfección y desodorización. A domicilio.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
+    title: "Hidrolavados",
+    desc: "Limpieza a alta presión para fachadas, veredas, decks, patios y más. Resultados visibles desde la primera sesión.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    title: "Pulido de Pisos",
+    desc: "Maquinaria industrial para restaurar y abrillantar pisos de mármol, madera, porcelanato y más. Resultado de brillo duradero.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    title: "Venta de Insumos",
+    desc: "Proveemos artículos de limpieza, papelería e insumos para empresas e instituciones. Stock permanente y entregas coordinadas.",
+  },
+];
+
+const clients = [
+  "Gobierno de la Provincia de Bs. As.",
+  "Hotel Amau UNLP",
+  "Grand Brizo La Plata",
+  "Land Plaza Hotel",
+  "Puerto La Plata",
+  "Grupo Randazzo",
+  "Rivadavia",
+  "Hotel del Rey",
+];
+
+const zones = ["La Plata", "Ensenada", "Berisso", "Quilmes", "Berazategui", "Florencio Varela"];
+---
+
+<Layout title="Hygea – Limpieza y Mantenimiento | La Plata">
+  <!-- ═══════════════════════════════
+       NAV
+  ═══════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-h">Hygea</span>
+        <span class="logo-sub">limpieza y mantenimiento</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li>
+          <a
+            href="https://wa.me/5492215736371"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════
+         SECCIÓN INICIO / HERO
+    ═══════════════════════════════ -->
+    <section id="inicio" class="hero">
+      <!-- Decorative blobs -->
+      <div class="hero-blob hero-blob--1"></div>
+      <div class="hero-blob hero-blob--2"></div>
+      <div class="hero-blob hero-blob--3"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="section-label anim-fade-up">Desde 2018 · La Plata y GBA</p>
+          <h1 class="hero-title anim-fade-up anim-delay-1">
+            Limpieza profesional<br />
+            <span class="hero-title--accent">para tu empresa</span>
+          </h1>
+          <p class="hero-desc anim-fade-up anim-delay-2">
+            Personal capacitado, maquinaria industrial y compromiso real. Brindamos
+            soluciones de limpieza para empresas, consorcios e instituciones en La Plata
+            y toda la región.
+          </p>
+
+          <div class="hero-ctas anim-fade-up anim-delay-3">
+            <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+            <a href="#contacto" class="btn btn-ghost-white">Solicitar presupuesto</a>
+          </div>
+
+          <div class="hero-stats anim-fade-up anim-delay-4">
+            <div class="stat">
+              <strong>+7</strong>
+              <span>años de trayectoria</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>6+</strong>
+              <span>zonas de cobertura</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>personal capacitado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual anim-fade-up anim-delay-2">
+          <div class="hero-card">
+            <div class="hero-card__icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p class="hero-card__title">Calidad garantizada</p>
+            <p class="hero-card__text">Compromiso, calidad y servicio en cada trabajo.</p>
+          </div>
+
+          <div class="hero-zones">
+            <p class="zones-label">Zonas de cobertura</p>
+            <div class="zones-list">
+              {zones.map((z) => (
+                <span class="zone-tag">{z}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SECCIÓN SERVICIOS
+    ═══════════════════════════════ -->
+    <section id="servicios" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Lo que hacemos</p>
+          <h2 class="section-title">Nuestros servicios</h2>
+          <p class="section-desc">
+            Soluciones de limpieza adaptadas a cada necesidad, con personal
+            especializado y equipamiento de última generación.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          {services.map((s, i) => (
+            <article class="service-card" style={`animation-delay: ${i * 0.08}s`}>
+              <div class="service-card__icon" set:html={s.icon} />
+              <h3 class="service-card__title">{s.title}</h3>
+              <p class="service-card__desc">{s.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <!-- Clientes -->
+        <div class="clients-strip">
+          <p class="clients-label">Confían en nosotros</p>
+          <div class="clients-marquee-wrap">
+            <div class="clients-marquee">
+              {[...clients, ...clients].map((c) => (
+                <span class="client-name">{c}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SECCIÓN CONTACTO
+    ═══════════════════════════════ -->
+    <section id="contacto" class="contact-section">
+      <div class="contact-bg-shape"></div>
+      <div class="container contact-inner">
+        <div class="contact-left">
+          <p class="section-label">Hablemos</p>
+          <h2 class="section-title">Solicitá tu<br />presupuesto</h2>
+          <p class="section-desc">
+            Tomás Orchiani y su equipo están listos para asesorarte. Sin compromiso
+            y con respuesta rápida.
+          </p>
+
+          <div class="contact-links">
+            <a href="https://wa.me/5492215736371" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link__icon contact-link__icon--wa">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              </span>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>221 – 5736371</span>
+              </div>
+            </a>
+
+            <a href="mailto:hygeahg@gmail.com" class="contact-link">
+              <span class="contact-link__icon contact-link__icon--mail">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <div>
+                <strong>Email</strong>
+                <span>hygeahg@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/hygea.hg" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link__icon contact-link__icon--ig">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </span>
+              <div>
+                <strong>Instagram</strong>
+                <span>@hygea.hg</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa / Consorcio</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Opcional" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="servicio">Servicio de interés</label>
+              <select id="servicio" name="servicio">
+                <option value="">Seleccioná un servicio…</option>
+                <option>Limpieza y mantenimiento de empresa</option>
+                <option>Final de obra / Pre mudanza</option>
+                <option>Limpieza de tapizados</option>
+                <option>Hidrolavado</option>
+                <option>Pulido de pisos</option>
+                <option>Venta de insumos</option>
+                <option>Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos sobre tu necesidad…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">
+              Enviar mensaje
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+
+            <p class="form-note">
+              También podés escribirnos directo por
+              <a href="https://wa.me/5492215736371" target="_blank" rel="noopener">WhatsApp</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════
+       FOOTER
+  ═══════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-logo">Hygea</p>
+        <p class="footer-tagline">limpieza y mantenimiento</p>
+      </div>
+      <p class="footer-copy">© {new Date().getFullYear()} Hygea. La Plata, Buenos Aires.</p>
+      <a href="https://wa.me/5492215736371" target="_blank" rel="noopener" class="btn btn-outline footer-cta">
+        Contactar ahora
+      </a>
+    </div>
+  </footer>
+</Layout>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById("nav-toggle");
+  const links  = document.getElementById("nav-links");
+  toggle?.addEventListener("click", () => {
+    links?.classList.toggle("is-open");
+    toggle.classList.toggle("is-open");
+  });
+  // Close on link click
+  links?.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      links.classList.remove("is-open");
+      toggle?.classList.remove("is-open");
+    });
+  });
+
+  // Intercept form submit → redirect to WhatsApp
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nombre   = (form.elements.namedItem("nombre")   as HTMLInputElement)?.value;
+    const servicio = (form.elements.namedItem("servicio") as HTMLSelectElement)?.value;
+    const mensaje  = (form.elements.namedItem("mensaje")  as HTMLTextAreaElement)?.value;
+    const text = encodeURIComponent(
+      `Hola Hygea! Soy ${nombre || "un cliente"}.\nServicio de interés: ${servicio || "—"}.\n${mensaje}`
+    );
+    window.open(`https://wa.me/5492215736371?text=${text}`, "_blank");
+  });
+
+  // Scroll-triggered fade-up for service cards
+  const cards = document.querySelectorAll(".service-card");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          (en.target as HTMLElement).style.opacity = "1";
+          (en.target as HTMLElement).style.transform = "translateY(0)";
+          io.unobserve(en.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  cards.forEach((c) => io.observe(c));
+</script>
+
+<style>
+  /* ═══════════ NAV ═══════════ */
+  .nav-wrap {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: 100;
+    background: rgba(0, 58, 122, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-h {
+    font-family: var(--f-display);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--c-white);
+    letter-spacing: -0.02em;
+  }
+  .logo-sub {
+    font-size: 0.65rem;
+    color: var(--c-accent);
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-links a:not(.btn) {
+    color: rgba(255,255,255,0.85);
+    font-family: var(--f-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4em 0.8em;
+    border-radius: var(--r-sm);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:not(.btn):hover {
+    color: var(--c-white);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ═══════════ HERO ═══════════ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 100svh;
+    background: linear-gradient(135deg, var(--c-blue-900) 0%, var(--c-blue-700) 55%, #0090d4 100%);
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-blob--1 {
+    width: 500px; height: 500px;
+    background: rgba(0, 195, 255, 0.18);
+    top: -120px; right: -80px;
+  }
+  .hero-blob--2 {
+    width: 340px; height: 340px;
+    background: rgba(0, 90, 200, 0.25);
+    bottom: 0; left: -60px;
+  }
+  .hero-blob--3 {
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.06);
+    top: 40%; left: 42%;
+  }
+
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .hero-content { color: var(--c-white); }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--c-white);
+    margin-bottom: var(--space-sm);
+  }
+  .hero-title--accent {
+    background: linear-gradient(90deg, var(--c-accent), #80e4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat strong { font-family: var(--f-display); font-size: 1.5rem; font-weight: 800; color: var(--c-white); }
+  .stat span   { font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+  .stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.2); }
+
+  /* Hero right column */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    border-radius: var(--r-lg);
+    padding: 1.6rem 1.8rem;
+    color: var(--c-white);
+  }
+  .hero-card__icon {
+    width: 52px; height: 52px;
+    background: rgba(0, 195, 255, 0.25);
+    border-radius: var(--r-md);
+    display: grid; place-items: center;
+    margin-bottom: 0.8rem;
+  }
+  .hero-card__title { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+  .hero-card__text  { font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+
+  .hero-zones {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: var(--r-md);
+    padding: 1.2rem 1.4rem;
+  }
+  .zones-label {
+    font-family: var(--f-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    margin-bottom: 0.65rem;
+  }
+  .zones-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .zone-tag {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 0.78rem;
+    padding: 0.25em 0.7em;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* ═══════════ SERVICES ═══════════ */
+  .services-section {
+    padding-block: var(--space-xl);
+    background: var(--c-off);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto var(--space-lg);
+  }
+  .section-title {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    color: var(--c-blue-900);
+    margin-bottom: 0.6rem;
+  }
+  .section-desc {
+    color: var(--c-muted);
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .service-card {
+    background: var(--c-white);
+    border: 1px solid rgba(0,91,181,0.08);
+    border-radius: var(--r-lg);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0,91,181,0.18);
+    transform: translateY(-4px) !important;
+  }
+
+  .service-card__icon {
+    width: 48px; height: 48px;
+    background: var(--c-blue-100);
+    border-radius: var(--r-md);
+    display: grid; place-items: center;
+    color: var(--c-blue-700);
+    margin-bottom: 1rem;
+  }
+  .service-card__icon svg { width: 22px; height: 22px; }
+
+  .service-card__title {
+    font-size: 1.05rem;
+    color: var(--c-blue-900);
+    margin-bottom: 0.45rem;
+  }
+  .service-card__desc {
+    font-size: 0.9rem;
+    color: var(--c-muted);
+    line-height: 1.6;
+  }
+
+  /* Clients marquee */
+  .clients-strip {
+    margin-top: var(--space-lg);
+    text-align: center;
+  }
+  .clients-label {
+    font-family: var(--f-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+    margin-bottom: 1.2rem;
+  }
+  .clients-marquee-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .clients-marquee {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .client-name {
+    white-space: nowrap;
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--c-blue-700);
+    padding: 0.4em 1.1em;
+    background: white;
+    border: 1px solid rgba(0,91,181,0.12);
+    border-radius: var(--r-pill);
+    box-shadow: 0 2px 8px rgba(0,91,181,0.07);
+  }
+
+  /* ═══════════ CONTACT ═══════════ */
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--space-xl);
+    background: var(--c-white);
+  }
+
+  .contact-bg-shape {
+    position: absolute;
+    top: -120px; right: -160px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, var(--c-blue-100) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .contact-left .section-title { color: var(--c-blue-900); margin-bottom: 0.6rem; }
+  .contact-left .section-desc  { color: var(--c-muted); margin-bottom: var(--space-md); }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--c-off);
+    border: 1px solid rgba(0,91,181,0.1);
+    border-radius: var(--r-md);
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+    color: var(--c-ink);
+  }
+  .contact-link:hover {
+    background: var(--c-white);
+    border-color: var(--c-blue-500);
+    box-shadow: 0 4px 18px rgba(0,91,181,0.1);
+    transform: translateX(4px);
+  }
+  .contact-link strong { display: block; font-family: var(--f-display); font-size: 0.85rem; color: var(--c-blue-900); }
+  .contact-link span   { font-size: 0.82rem; color: var(--c-muted); }
+
+  .contact-link__icon {
+    width: 40px; height: 40px;
+    border-radius: var(--r-sm);
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .contact-link__icon--wa   { background: #dcfce7; color: #16a34a; }
+  .contact-link__icon--mail { background: var(--c-blue-100); color: var(--c-blue-700); }
+  .contact-link__icon--ig   { background: #fce7f3; color: #9d174d; }
+
+  /* Form */
+  .contact-form {
+    background: var(--c-off);
+    border: 1px solid rgba(0,91,181,0.1);
+    border-radius: var(--r-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .form-group label {
+    font-family: var(--f-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c-blue-900);
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-family: var(--f-body);
+    font-size: 0.9rem;
+    color: var(--c-ink);
+    background: var(--c-white);
+    border: 1.5px solid rgba(0,91,181,0.15);
+    border-radius: var(--r-sm);
+    padding: 0.6em 0.85em;
+    outline: none;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    width: 100%;
+    resize: vertical;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: var(--c-blue-500);
+    box-shadow: 0 0 0 3px rgba(26,127,212,0.15);
+  }
+  .contact-form select { appearance: none; cursor: pointer; }
+
+  .form-submit { width: 100%; justify-content: center; padding-block: 0.9em; font-size: 1rem; }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--c-muted);
+  }
+  .form-note a { color: var(--c-blue-500); font-weight: 600; }
+
+  /* ═══════════ FOOTER ═══════════ */
+  .footer {
+    background: var(--c-blue-900);
+    padding-block: 1.6rem;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo    { font-family: var(--f-display); font-size: 1.2rem; font-weight: 800; color: white; line-height: 1; }
+  .footer-tagline { font-size: 0.65rem; color: var(--c-accent); letter-spacing: 0.06em; }
+  .footer-copy    { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+  .footer-cta     { border-color: rgba(255,255,255,0.3); color: white; font-size: 0.85rem; }
+  .footer-cta:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 900px) {
+    .hero-inner    { grid-template-columns: 1fr; }
+    .hero-visual   { display: none; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .form-row      { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 64px;
+      background: var(--c-blue-900);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 2rem;
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-links a:not(.btn) { font-size: 1.3rem; }
+
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
