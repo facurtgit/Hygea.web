@@ -240,7 +240,7 @@ En progreso
 | Sprint | Objetivo | Estado |
 |---------|----------|--------|
 | Sprint 1 | Comprender Astro y definir la arquitectura | ✅ |
-| Sprint 2 | Separar el sitio en tres páginas | 🟡 |
+| Sprint 2 | Modularizar los componentes del index.astro | 🟡 |
 | Sprint 3 | Construir Inicio | ⏳ |
 | Sprint 4 | Construir Servicios | ⏳ |
 | Sprint 5 | Construir Contacto | ⏳ |
