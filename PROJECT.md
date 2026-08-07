@@ -202,8 +202,8 @@ Estado:
 
 ## Sprint 2
 
-- Crear la estructura de tres páginas
-- Diseñar la navegación
+- Modularizar los componentes
+- Reorganizar el index.astro
 - Reorganizar la landing actual
 
 Estado:
@@ -252,24 +252,6 @@ En progreso
 ## Git
 
 Cada cambio importante deberá realizarse mediante commits descriptivos.
-
-Ejemplos:
-
-feat:
-Nueva funcionalidad.
-
-fix:
-Corrección de errores.
-
-style:
-Cambios visuales.
-
-refactor:
-Reorganización del código.
-
-docs:
-Documentación.
-
 ---
 
 # 10. Filosofía del proyecto
