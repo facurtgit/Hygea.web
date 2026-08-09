@@ -1,0 +1,202 @@
+---
+const zones = ["La Plata", "Ensenada", "Berisso", "Quilmes", "Berazategui", "Florencio Varela"];
+---
+/*   Hero 
+   Responsabilidad: Inicio de pagina, caratula
+*/
+
+<section id="inicio" class="hero">
+      <!-- Decorative blobs -->
+      <div class="hero-blob hero-blob--1"></div>
+      <div class="hero-blob hero-blob--2"></div>
+      <div class="hero-blob hero-blob--3"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="section-label anim-fade-up">Desde 2018 · La Plata y GBA</p>
+          <h1 class="hero-title anim-fade-up anim-delay-1">
+            Limpieza profesional<br />
+            <span class="hero-title--accent">para tu empresa</span>
+          </h1>
+          <p class="hero-desc anim-fade-up anim-delay-2">
+            Personal capacitado, maquinaria industrial y compromiso real. Brindamos
+            soluciones de limpieza para empresas, consorcios e instituciones en La Plata
+            y toda la región.
+          </p>
+
+          <div class="hero-ctas anim-fade-up anim-delay-3">
+            <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+            <a href="#contacto" class="btn btn-ghost-white">Solicitar presupuesto</a>
+          </div>
+
+          <div class="hero-stats anim-fade-up anim-delay-4">
+            <div class="stat">
+              <strong>+7</strong>
+              <span>años de trayectoria</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>6+</strong>
+              <span>zonas de cobertura</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>personal capacitado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual anim-fade-up anim-delay-2">
+          <div class="hero-card">
+            <div class="hero-card__icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p class="hero-card__title">Calidad garantizada</p>
+            <p class="hero-card__text">Compromiso, calidad y servicio en cada trabajo.</p>
+          </div>
+
+          <div class="hero-zones">
+            <p class="zones-label">Zonas de cobertura</p>
+            <div class="zones-list">
+              {zones.map((z) => (
+                <span class="zone-tag">{z}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+          .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 100svh;
+    background: linear-gradient(135deg, var(--c-blue-900) 0%, var(--c-blue-700) 55%, #0090d4 100%);
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: var(--space-xl);
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-blob--1 {
+    width: 500px; height: 500px;
+    background: rgba(0, 195, 255, 0.18);
+    top: -120px; right: -80px;
+  }
+  .hero-blob--2 {
+    width: 340px; height: 340px;
+    background: rgba(0, 90, 200, 0.25);
+    bottom: 0; left: -60px;
+  }
+  .hero-blob--3 {
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.06);
+    top: 40%; left: 42%;
+  }
+
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .hero-content { color: var(--c-white); }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--c-white);
+    margin-bottom: var(--space-sm);
+  }
+  .hero-title--accent {
+    background: linear-gradient(90deg, var(--c-accent), #80e4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat strong { font-family: var(--f-display); font-size: 1.5rem; font-weight: 800; color: var(--c-white); }
+  .stat span   { font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+  .stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.2); }
+
+  /* Hero right column */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    border-radius: var(--r-lg);
+    padding: 1.6rem 1.8rem;
+    color: var(--c-white);
+  }
+  .hero-card__icon {
+    width: 52px; height: 52px;
+    background: rgba(0, 195, 255, 0.25);
+    border-radius: var(--r-md);
+    display: grid; place-items: center;
+    margin-bottom: 0.8rem;
+  }
+  .hero-card__title { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+  .hero-card__text  { font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+
+  .hero-zones {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: var(--r-md);
+    padding: 1.2rem 1.4rem;
+  }
+  .zones-label {
+    font-family: var(--f-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    margin-bottom: 0.65rem;
+  }
+  .zones-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .zone-tag {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 0.78rem;
+    padding: 0.25em 0.7em;
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+    </style>
