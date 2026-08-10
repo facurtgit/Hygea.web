@@ -73,3 +73,44 @@ El botón cambia visualmente a una X.
 Los enlaces se muestran correctamente.
 Al seleccionar un enlace, el menú se cierra.
 El menú ocupa correctamente el espacio debajo del Navbar.
+
+## Sesión 4 — Modularización de Hero y Services + Responsive
+
+### Hero
+
+Se revisó y completó la independencia del componente:
+`src/components/Hero.astro`
+
+Se comprobó el funcionamiento en:
+
+- Escritorio.
+- Vista móvil de 412 × 915.
+- Navbar y Hero funcionando correctamente.
+- Sin problemas de ancho ni scroll horizontal.
+
+El CSS responsive del Hero quedó independizado de `index.astro`.
+---
+
+### Services
+
+Se creó el componente:
+`src/components/Services.astro`
+Se trasladó desde `index.astro`:
+
+#### Datos
+- `const services`
+- `const clients`
+
+Los datos ahora forman parte del frontmatter de `Services.astro`.
+Estado de la arquitectura
+src/
+├── components/
+│   ├── Navbar.astro
+│   ├── Hero.astro
+│   └── Services.astro
+│
+├── layouts/
+├── pages/
+│   └── index.astro
+│
+└── styles/
