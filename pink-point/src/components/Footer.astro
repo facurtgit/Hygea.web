@@ -1,0 +1,39 @@
+  <!-- ═══════════════════════════════
+       FOOTER
+  ═══════════════════════════════ -->
+<footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-logo">Hygea</p>
+        <p class="footer-tagline">limpieza y mantenimiento</p>
+      </div>
+      <p class="footer-copy">© {new Date().getFullYear()} Hygea. La Plata, Buenos Aires.</p>
+      <a href="https://wa.me/5492215736371" target="_blank" rel="noopener" class="btn btn-outline footer-cta">
+        Contactar ahora
+      </a>
+    </div>
+  </footer>
+
+  <style>
+  .footer {
+    background: var(--c-blue-900);
+    padding-block: 1.6rem;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo    { font-family: var(--f-display); font-size: 1.2rem; font-weight: 800; color: white; line-height: 1; }
+  .footer-tagline { font-size: 0.65rem; color: var(--c-accent); letter-spacing: 0.06em; }
+  .footer-copy    { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+  .footer-cta     { border-color: rgba(255,255,255,0.3); color: white; font-size: 0.85rem; }
+  .footer-cta:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 640px) {
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
