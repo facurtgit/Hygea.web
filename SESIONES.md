@@ -102,15 +102,32 @@ Se trasladó desde `index.astro`:
 - `const clients`
 
 Los datos ahora forman parte del frontmatter de `Services.astro`.
-Estado de la arquitectura
-src/
-├── components/
-│   ├── Navbar.astro
-│   ├── Hero.astro
-│   └── Services.astro
-│
-├── layouts/
-├── pages/
-│   └── index.astro
-│
-└── styles/
+
+## Sesión 5 — Finalización de la modularización de componentes
+
+### HERO
+
+Se actualizo informacion que se mostraba en pantalla "años de exp"
+
+### Contact
+
+Se creó el componente:
+
+`src/components/Contact.astro`
+
+Se trasladó desde `index.astro` Todo el contenido HTML y CSS 
+
+### FOOTER
+
+Idem Contact
+
+
+### INDEX
+
+Se ha finalizado la limpieza y logrado un estado limpio del archivo index.astro
+
+### Estado actual
+
+La pagina original funciona correctamente luego de la modularizacion. Proxima a actualizar
+
+
